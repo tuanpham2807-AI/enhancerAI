@@ -1,7 +1,7 @@
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 
 const getAI = () => {
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
   if (!apiKey) {
     throw new Error("GEMINI_API_KEY is not configured");
   }
@@ -22,8 +22,7 @@ export async function processImage(
   customPrompt?: string
 ): Promise<string> {
   const ai = getAI();
-  const model = "gemini-2.5-flash-image";
-
+ const model = "gemini-1.5-flash";
   let prompt = "";
   switch (task) {
     case "full_pro":
